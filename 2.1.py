@@ -31,7 +31,7 @@ def kvyr():
             logging.info('Корни найдены')
 
     except (ValueError ,ZeroDivisionError):
-        logging.exception('Уравнение не имеет корней. ')
+        logging.warning('Уравнение не имеет корней. ')
         print('Ошибка ! Попробуйте с другими коэффициентами.')
         #kvyr()
 kvyr()
