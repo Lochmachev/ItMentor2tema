@@ -16,17 +16,17 @@ logging.basicConfig(level=logging.INFO,
 def generator():
     a = int(input('Введите нижнею границу диапазона : '))
     b = int(input('Введите верхнею границу диапазона : '))
-    try:
-        if a >= 0 and a < b and b <= 100:
-            x = random.randint (a, b)
-            print('Случайное число : ',x)
-        else:
-            raise ValueError ('Диапазон чисел от 0 до 100 !!!')
+    logging.info(f'Введены числа a: {a} ; b: {b}')
+    if a < 0 or a > b or b > 100:
+        raise Exception ('Диапазон чисел от 0 до 100 !!!')
 
-    except Exception:
+    else:
+        x = random.randint(a, b)
+        print('Случайное число : ', x)
+        logging.info(f'Выведено случайное число - {x}')
 
-        logging.info('Диапазон чисел от 0 до 100 !!!')
-
-        print('Неверные данные...')
-        generator()
-generator(),
+try:
+    generator()
+except Exception:
+    logging.warning('Диапазон чисел от 0 до 100 !!!')
+    print('Попробуйте ещё раз')
